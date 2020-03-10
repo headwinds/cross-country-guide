@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  Column,
+  Row,
+  Headline,
+} from "cross-country";
+import ButtonDoc from "./components/ButtonDoc";
+import TextDoc from "./components/TextDoc";
+import WolfDoc from "./components/WolfDoc";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+const App = () => {
+  const [feedback, setFeedback] = React.useState("");
+
+  const handleClick = React.useCallback(
+    label => {
+      setFeedback(`${label} has been clicked`);
+    },
+    [feedback]
   );
-}
+  return (
+    <Column hasBackground={false}>
+      <Headline text="Cross-Country Design System" />
+      <Row>
+        <ButtonDoc />
+        <TextDoc />
+        <WolfDoc />
+      </Row>
+      <Column>
+        <a href="https://www.npmjs.com/package/cross-country">cross-country on npm</a>
+      </Column>
+    </Column>
+
+  );
+};
 
 export default App;
